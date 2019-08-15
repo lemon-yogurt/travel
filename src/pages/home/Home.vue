@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div>home</div>
+    <home-header></home-header>
 
     <!-- 跳转 -->
     <!-- <router-link to="/list">列表页</router-link> -->
@@ -8,8 +8,12 @@
 </template>
 
 <script>
+import HomeHeader from './components/Header'
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    HomeHeader: HomeHeader
+  }
 }
 </script>
 

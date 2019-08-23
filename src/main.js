@@ -4,6 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import fastclick from 'fastclick'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+// require styles
+import 'swiper/dist/css/swiper.css'
 // 路由配置内容
 import 'styles/reset.css'
 import 'styles/border.css'
@@ -11,6 +14,7 @@ import 'styles/iconfont.css'
 
 Vue.config.productionTip = false
 fastclick.attach(document.body)
+Vue.use(VueAwesomeSwiper)// 轮播图
 
 /* eslint-disable no-new */
 // 挂载到index.js的div#app元素上面，

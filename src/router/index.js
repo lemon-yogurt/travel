@@ -6,7 +6,7 @@ Vue.use(Router)
 
 // 导出一组路由配置项
 export default new Router({
-  // 当你访问根路径时，对应hello world
+  // 当你访问根路径时，对应home组件
   routes: [
     {
       path: '/',

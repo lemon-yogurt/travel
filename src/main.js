@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import fastclick from 'fastclick'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import store from './store'
 // require styles
 import 'swiper/dist/css/swiper.css'
 // 路由配置内容
@@ -23,6 +24,7 @@ Vue.use(VueAwesomeSwiper)// 轮播图
 new Vue({
   el: '#app',
   router,
+  store,
   // =》 router:router
   components: { App },
   template: '<App/>'

@@ -42,7 +42,6 @@ export default {
     },
     methods: {
       handleClickAlp (e) {
-        console.log(e.target.innerHTML)
         this.$emit('change', e.target.innerText)
       },
       handleTouchStart () {

@@ -5,14 +5,19 @@
             <div class="title border-topbottom">当前城市</div>
             <div class="button-list">
               <div class="button-wrapper">
-                  <div class="button">北京</div>
+                  <div class="button">{{this.currentCity}}</div>
               </div>
             </div>
         </div>
         <div class="area">
             <div class="title border-topbottom">热门城市</div>
             <div class="button-list">
-              <div class="button-wrapper" v-for='item of hotCities' :key='item.id'>
+              <div
+                class="button-wrapper"
+                v-for='item of hotCities'
+                :key='item.id'
+                @click="handleCityClick(item.name)"
+              >
                   <div class="button">{{item.name}}</div>
               </div>
             </div>
@@ -20,7 +25,14 @@
         <div class="area" v-for='(item, key) of cities' :key='key' :ref='key'>
             <div class="title border-topbottom">{{key}}</div>
             <div class="item-list">
-                <div class="item border-bottom" v-for='item2 of item' :key='item2.id'>{{item2.name}}</div>
+                <div
+                  class="item border-bottom"
+                  v-for='item2 of item'
+                  :key='item2.id'
+                  @click="handleCityClick(item2.name)"
+                >
+                  {{item2.name}}
+                </div>
             </div>
         </div>
       </div>
@@ -29,6 +41,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import { mapState, mapMutations } from 'vuex'
 export default {
     name: 'CityList',
     props: {
@@ -36,8 +49,23 @@ export default {
       cities: Object,
       letter: String
     },
+    computed: {
+      ...mapState({
+        currentCity: 'city'
+      })
+      // 把vuex里面的city数据映射到计算属性mapstate
+    },
+    methods: {
+      handleCityClick (city) {
+        // this.$store.dispatch('changeCity', city)
+        // this.$store.commit('changeCity', city)
+        this.changeCity(city) // 代替上面那种写法，方法被mapmutations直接映射过来了
+        this.$router.push('/')
+      },
+      ...mapMutations(['changeCity'])
+    },
     mounted () {
-        this.scroll = new Bscroll(this.$refs.wrapper)
+        this.scroll = new Bscroll(this.$refs.wrapper, {click: true})
     },
     watch: {
       letter () {

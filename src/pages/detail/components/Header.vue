@@ -35,6 +35,9 @@ export default {
     activated () {
         window.addEventListener('scroll', this.handleScroll)
     },
+    deactivated () { // 显示或者隐藏组件的钩子
+        window.removeEventListener('scroll', this.handleScroll)
+    },
     methods: {
         handleScroll () {
            const top = document.documentElement.scrollTop

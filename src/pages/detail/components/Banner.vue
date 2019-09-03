@@ -1,19 +1,19 @@
 <template>
   <div>
     <div class='banner' @click='handleBannerClick'>
-        <img class="banner-img" src="//img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_600x330_f922b488.jpg" alt="">
+        <img class="banner-img" :src="bannerImg" alt="">
         <div class="banner-info">
             <div class='banner-title'>
-                大连圣亚海洋世界(AAAA景区)
+                {{this.sightName}}
             </div>
             <div class='banner-number'>
                 <span class="iconfont banner-icon">&#xe606;</span>
-                39
+                {{this.bannerImgs.length}}
             </div>
         </div>
     </div>
     <common-gallary
-      :imgs='imgs'
+      :imgs='bannerImgs'
       v-show='showGallary'
       @close='handleGallaryClose'
     ></common-gallary>
@@ -24,12 +24,16 @@
 import CommonGallary from 'common/gallary/Gallary'
 export default {
     name: 'DetailBanner',
+    props: {
+      sightName: String,
+      bannerImg: String,
+      bannerImgs: Array
+    },
     components: {
         CommonGallary
     },
     data () {
       return {
-        imgs: ['http://img1.qunarzz.com/sight/p0/1907/ca/ca68bd95bc36bdba3.img.jpg_r_800x800_33169c4b.jpg', 'http://img1.qunarzz.com/sight/p0/1907/ca/ca68bd95bc36bdba3.img.jpg_r_800x800_33169c4b.jpg'],
         showGallary: false
       }
     },
@@ -49,9 +53,9 @@ export default {
     position: relative
     overflow: hidden
     height: 0
-    padding-bottom: 55%
+    padding-bottom: 45%
     .banner-img
-      wodth: 100%
+      width: 100%
     .banner-info
       display: flex
       position: absolute
